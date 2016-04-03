@@ -112,7 +112,7 @@ func main() {
 
 	// output unused VKs as ref to fix dup VKs
 	if len(usedVickeys) > 0 {
-		fmt.Println("\nunused VKs (main 30 keys)")
+		fmt.Println("\nunused VKs from main 30 keys")
 		vksStr := ",./;"
 		for _, ch := range vksStr {
 			vickey := getVickey(byte(ch))
@@ -121,13 +121,15 @@ func main() {
 			}
 		}
 
-		fmt.Println("\nunused VKs (whole kbd)")
+		fmt.Println("\nAll VKs (whole kbd, * marks used VK)")
 		vksStr = "+,-.;/`[\\]'"
 		for _, ch := range vksStr {
 			vickey := getVickey(byte(ch))
-			if !usedVickeys[vickey] {
-				fmt.Printf(" %c : %s\n", ch, vickey)
+			usedMark := ' '
+			if usedVickeys[vickey] {
+				usedMark = '*'
 			}
+			fmt.Printf(" %c : %c %s\n", ch, usedMark, vickey)
 		}
 	}
 }
