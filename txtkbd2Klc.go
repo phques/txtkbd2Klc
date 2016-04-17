@@ -40,6 +40,14 @@ func getVickey(ch byte) string {
 		return "?"
 	}
 }
+
+func outputChars(chars []byte, idxes []int) {
+	for _, idx := range idxes {
+		fmt.Printf("%c", chars[idx])
+	}
+	fmt.Print("\n")
+}
+
 func main() {
 	// read text file keyboard def (30 mains keys)
 	if len(os.Args) != 2 {
@@ -132,4 +140,22 @@ func main() {
 			fmt.Printf(" %c : %c %s\n", ch, usedMark, vickey)
 		}
 	}
+
+	// output text used to create ktouch lessons (ktouch lesson generator)
+	fmt.Println("\n// ktouch lesson generator keyboard")
+	lowerChars := strBytes[30:]
+	outputChars(lowerChars, []int{12, 13, 16, 17})
+	outputChars(lowerChars, []int{11, 18})
+	outputChars(lowerChars, []int{10, 19})
+	outputChars(lowerChars, []int{22, 26})
+	outputChars(lowerChars, []int{2, 7})
+	outputChars(lowerChars, []int{1, 8})
+	outputChars(lowerChars, []int{3, 6})
+	outputChars(lowerChars, []int{23, 25})
+	outputChars(lowerChars, []int{21, 27})
+	outputChars(lowerChars, []int{14, 15})
+	outputChars(lowerChars, []int{20, 28})
+	outputChars(lowerChars, []int{0, 9})
+	outputChars(lowerChars, []int{4, 5})
+	outputChars(lowerChars, []int{24, 29})
 }
